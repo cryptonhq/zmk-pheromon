@@ -85,7 +85,7 @@
     };
 
     // Use a different label for the encoder
-    encoder_1: encoder_1 {
+    encoder: encoder_1 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 28 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro 27 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
@@ -96,7 +96,7 @@
 
     sensors {
         compatible = "zmk,keymap-sensors";
-        sensors = <&encoder_1>;
+        sensors = <&encoder>;
         triggers-per-rotation = <20>;
     };
 
