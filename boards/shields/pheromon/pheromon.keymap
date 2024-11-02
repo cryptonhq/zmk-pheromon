@@ -11,7 +11,7 @@
             bindings = <&kp C_PP>, <&kp C_NEXT>, <&kp C_PREV>;
         };
 
-        ble_encoder: ble_encoder {
+        encoder_1: encoder_1 {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&bt BT_NXT>, <&bt BT_PRV>;
@@ -29,7 +29,7 @@
                 &kp LCTRL &kp LGUI  &kp LALT                      &kp SPACE                                &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
 
-            sensor-bindings = <&ble_encoder>;
+            sensor-bindings = <&encoder_1>;
         };
     };
 };
