@@ -26,7 +26,13 @@
         a-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio0 02 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         resolution = <4>;
+        steps = <80>;
         status = "okay";
+    };
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&ble_encoder>;
+        triggers-per-rotation = <20>;
     };
 
     kscan0: kscan_0 {

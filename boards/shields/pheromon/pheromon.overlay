@@ -1,5 +1,11 @@
 #include "pheromon.dtsi"
 
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+};
+
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -37,6 +43,7 @@
         ngpios = <8>;
     };
 };
+
 &i2c0_default {
     group1 {
         psels = <NRF_PSEL(TWIM_SDA, 1, 0)>,  // Pin P1.00
@@ -79,30 +86,29 @@
         label = "KSCAN";
         diode-direction = "col2row";
 
-        col-gpios                             // col #
-        = 
-            <&shift_reg 0 GPIO_ACTIVE_HIGH>, // C0: QH
-            <&shift_reg 1 GPIO_ACTIVE_HIGH>, // C1: QG
-            <&shift_reg 2 GPIO_ACTIVE_HIGH>, // C2: QF
-            <&shift_reg 3 GPIO_ACTIVE_HIGH>, // C3: QE
-            <&shift_reg 4 GPIO_ACTIVE_HIGH>, // C4: QD
-            <&shift_reg 5 GPIO_ACTIVE_HIGH>, // C5: QC
-            <&shift_reg 6 GPIO_ACTIVE_HIGH>, // C6: QB
-            <&shift_reg 7 GPIO_ACTIVE_HIGH>, // C7: QA
-            <&pro_micro 9 GPIO_ACTIVE_HIGH>, // C8: GPIO 9
-            <&pro_micro 22 GPIO_ACTIVE_HIGH>, // C9: GPIO 22
-            <&pro_micro 20 GPIO_ACTIVE_HIGH>, // C10: GPIO 20
-            <&pro_micro 23 GPIO_ACTIVE_HIGH>, // C11: GPIO 23
-            <&pro_micro 0 GPIO_ACTIVE_HIGH>, // C12: GPIO 0
-            <&pro_micro 1 GPIO_ACTIVE_HIGH>  // C13: GPIO 1
-        ;
+        col-gpios
+            = <&shift_reg 0 GPIO_ACTIVE_HIGH> // C0: QH
+            , <&shift_reg 1 GPIO_ACTIVE_HIGH> // C1: QG
+            , <&shift_reg 2 GPIO_ACTIVE_HIGH> // C2: QF
+            , <&shift_reg 3 GPIO_ACTIVE_HIGH> // C3: QE
+            , <&shift_reg 4 GPIO_ACTIVE_HIGH> // C4: QD
+            , <&shift_reg 5 GPIO_ACTIVE_HIGH> // C5: QC
+            , <&shift_reg 6 GPIO_ACTIVE_HIGH> // C6: QB
+            , <&shift_reg 7 GPIO_ACTIVE_HIGH> // C7: QA
+            , <&pro_micro 9 GPIO_ACTIVE_HIGH> // C8: GPIO 9
+            , <&pro_micro 22 GPIO_ACTIVE_HIGH>  // C9: GPIO 22
+            , <&pro_micro 20 GPIO_ACTIVE_HIGH>  // C10: GPIO 20
+            , <&pro_micro 23 GPIO_ACTIVE_HIGH>  // C11: GPIO 23
+            , <&pro_micro 0 GPIO_ACTIVE_HIGH> // C12: GPIO 0
+            , <&pro_micro 1 GPIO_ACTIVE_HIGH> // C13: GPIO 1
+            ;
 
-        row-gpios = 
-            <&pro_micro  8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // R0: GPIO 8
-            <&pro_micro 25 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // R1: GPIO 25
-            <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // R2: GPIO 18
-            <&pro_micro 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // R3: GPIO 24
-            <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // R4: GPIO 21
-        ;
+        row-gpios
+            = <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R0: GPIO 8
+            , <&pro_micro 25 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R1: GPIO 25
+            , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R2: GPIO 18
+            , <&pro_micro 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R3: GPIO 24
+            , <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R4: GPIO 21
+            ;
     };
 };
