@@ -2,7 +2,7 @@
 
 &spi0 {
     status = "okay";
-    cs-gpios = <&pro_micro 7 GPIO_ACTIVE_LOW>;
+    cs-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>; 
 
     shift_reg: 595@0 {
         compatible = "zmk,gpio-595";
@@ -16,12 +16,30 @@
     };
 };
 
+
+&i2c0_default {
+    group1 {
+        psels = <NRF_PSEL(TWIM_SDA, 1, 0)>,  // Pin P1.00
+                <NRF_PSEL(TWIM_SCL, 0, 11)>; // Pin P0.11
+    };
+};
+
+&i2c0_sleep {
+    group1 {
+        psels = <NRF_PSEL(TWIM_SDA, 1, 0)>,  // Pin P1.00
+                <NRF_PSEL(TWIM_SCL, 0, 11)>; // Pin P0.11
+        low-power-enable;
+    };
+};
+
 &i2c0 {
     status = "okay";
+    sda-pin = <1 0>;  // Pin P1.00
+    scl-pin = <0 11>; // Pin P0.11
+
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
-        label = "DISPLAY";
         width = <128>;
         height = <32>;
         segment-offset = <0>;
@@ -31,39 +49,39 @@
         segment-remap;
         com-invdir;
         com-sequential;
+        inversion-on;
         prechargep = <0x22>;
     };
 };
-
 / {
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
         diode-direction = "col2row";
 
-        col-gpios
-            = <&shift_reg 0 GPIO_ACTIVE_HIGH>
-            , <&shift_reg 1 GPIO_ACTIVE_HIGH>
-            , <&shift_reg 2 GPIO_ACTIVE_HIGH>
-            , <&shift_reg 3 GPIO_ACTIVE_HIGH>
-            , <&shift_reg 4 GPIO_ACTIVE_HIGH>
-            , <&shift_reg 5 GPIO_ACTIVE_HIGH>
-            , <&shift_reg 6 GPIO_ACTIVE_HIGH>
-            , <&shift_reg 7 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 2 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 3 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 5 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 6 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
-            ;
+        col-gpios = <
+            &shift_reg 0 GPIO_ACTIVE_HIGH,  // C0: QH
+            &shift_reg 1 GPIO_ACTIVE_HIGH,  // C1: QG
+            &shift_reg 2 GPIO_ACTIVE_HIGH,  // C2: QF
+            &shift_reg 3 GPIO_ACTIVE_HIGH,  // C3: QE
+            &shift_reg 4 GPIO_ACTIVE_HIGH,  // C4: QD
+            &shift_reg 5 GPIO_ACTIVE_HIGH,  // C5: QC
+            &shift_reg 6 GPIO_ACTIVE_HIGH,  // C6: QB
+            &shift_reg 7 GPIO_ACTIVE_HIGH,  // C7: QA
+            &pro_micro 9 GPIO_ACTIVE_HIGH,  // C8: GPIO 9
+            &pro_micro 22 GPIO_ACTIVE_HIGH, // C9: GPIO 22
+            &pro_micro 20 GPIO_ACTIVE_HIGH, // C10: GPIO 20
+            &pro_micro 23 GPIO_ACTIVE_HIGH, // C11: GPIO 23
+            &pro_micro 0 GPIO_ACTIVE_HIGH,  // C12: GPIO 0
+            &pro_micro 1 GPIO_ACTIVE_HIGH   // C13: GPIO 1
+        >;
 
-        row-gpios
-            = <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            ;
+        row-gpios = <
+            &pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN),  // R0: GPIO 8
+            &pro_micro 25 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN), // R1: GPIO 25
+            &pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN), // R2: GPIO 18
+            &pro_micro 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN), // R3: GPIO 24
+            &pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)  // R4: GPIO 21
+        >;
     };
 };
