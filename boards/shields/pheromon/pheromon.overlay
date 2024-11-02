@@ -15,8 +15,6 @@
         ngpios = <8>;
     };
 };
-
-
 &i2c0_default {
     group1 {
         psels = <NRF_PSEL(TWIM_SDA, 1, 0)>,  // Pin P1.00
@@ -34,8 +32,7 @@
 
 &i2c0 {
     status = "okay";
-    sda-pin = <1 0>;  // Pin P1.00
-    scl-pin = <0 11>; // Pin P0.11
+    clock-frequency = <I2C_BITRATE_STANDARD>;
 
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
