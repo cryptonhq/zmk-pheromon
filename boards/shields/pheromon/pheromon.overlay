@@ -61,7 +61,7 @@
         diode-direction = "col2row";
 
         col-gpios                             // col #
-        = <
+        = 
             <&shift_reg 0 GPIO_ACTIVE_HIGH>, // C0: QH
             <&shift_reg 1 GPIO_ACTIVE_HIGH>, // C1: QG
             <&shift_reg 2 GPIO_ACTIVE_HIGH>, // C2: QF
@@ -76,14 +76,14 @@
             <&pro_micro 23 GPIO_ACTIVE_HIGH>, // C11: GPIO 23
             <&pro_micro 0 GPIO_ACTIVE_HIGH>, // C12: GPIO 0
             <&pro_micro 1 GPIO_ACTIVE_HIGH>  // C13: GPIO 1
-        >;
+        ;
 
-        row-gpios = <
+        row-gpios = 
             <&pro_micro  8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // R0: GPIO 8
             <&pro_micro 25 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // R1: GPIO 25
             <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // R2: GPIO 18
             <&pro_micro 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // R3: GPIO 24
             <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // R4: GPIO 21
-        >;
+        ;
     };
 };
