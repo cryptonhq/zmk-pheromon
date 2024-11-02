@@ -1,0 +1,11 @@
+file_format: "1"
+id: pheromon
+name: Pheromon
+type: shield
+url: https://github.com/umgbhalla/pheromon
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - encoder
+  - display
