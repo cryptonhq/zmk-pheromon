@@ -1,3 +1,5 @@
 include:
   - board: nice_nano_v2
     shield: pheromon
+    snippet: zmk-usb-logging
+
