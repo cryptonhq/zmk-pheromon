@@ -152,7 +152,6 @@ default_layout: default_layout {
     display-name = "Default";
     transform = <&default_transform>;
     kscan = <&kscan0>;
-    sensors = <&encoder_1>;
     keys  //                     w   h    x    y     rot    rx    ry
         = <&key_physical_attrs 100 100    0    0       0     0     0>
         , <&key_physical_attrs 100 100  100    0       0     0     0>
