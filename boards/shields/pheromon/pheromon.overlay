@@ -81,20 +81,7 @@
     };
 };
 
- encoder_1: encoder_1 {
-        compatible = "alps,ec11";
-        a-gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0 02 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        resolution = <4>;
-        steps = <80>;
-        status = "okay";
-    };
 
-sensors {
-    compatible = "zmk,keymap-sensors";
-    sensors = <&encoder_1>;
-    triggers-per-rotation = <20>;
-};
 
 / {
     kscan0: kscan_0 {
@@ -125,6 +112,20 @@ sensors {
             , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R3: GPIO 24
             , <&gpio0 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R4: GPIO 21
             ;
+    };
+     encoder_1: encoder_1 {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&gpio0 02 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        resolution = <4>;
+        steps = <80>;
+        status = "okay";
+    };
+
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&encoder_1>;
+        triggers-per-rotation = <20>;
     };
 
     default_transform: keymap_transform_0 {
