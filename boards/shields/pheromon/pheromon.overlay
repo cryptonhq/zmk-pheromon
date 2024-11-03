@@ -97,20 +97,20 @@
             , <&shift_reg 5 (GPIO_ACTIVE_HIGH)> // C5: QC
             , <&shift_reg 6 (GPIO_ACTIVE_HIGH)> // C6: QB
             , <&shift_reg 7 (GPIO_ACTIVE_HIGH)> // C7: QA
-            , <&gpio1 06 GPIO_ACTIVE_HIGH> // C8: GPIO 9
+            , <&gpio1 6 GPIO_ACTIVE_HIGH> // C8: GPIO 9
             , <&gpio1 13 GPIO_ACTIVE_HIGH>  // C9: GPIO 22
             , <&gpio1 11 GPIO_ACTIVE_HIGH>  // C10: GPIO 20
             , <&gpio0 10 GPIO_ACTIVE_HIGH>  // C11: GPIO 23
-            , <&gpio0 06 GPIO_ACTIVE_HIGH> // C12: GPIO 0
-            , <&gpio0 08 GPIO_ACTIVE_HIGH> // C13: GPIO 1 
+            , <&gpio0 6 GPIO_ACTIVE_HIGH> // C12: GPIO 0
+            , <&gpio0 8 GPIO_ACTIVE_HIGH> // C13: GPIO 1 
             ;
 
         row-gpios
-            = <&gpio1 04(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R0: GPIO 8
-            , <&gpio1 01 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R1: GPIO 25
-            , <&gpio1 07 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R2: GPIO 18
-            , <&gpio1 02 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R3: GPIO 24
-            , <&gpio0 09 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R4: GPIO 21
+            = <&gpio1 4(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R0: GPIO 8
+            , <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R1: GPIO 25
+            , <&gpio1 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R2: GPIO 18
+            , <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R3: GPIO 24
+            , <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R4: GPIO 21
             ;
     };
      encoder_1: encoder_1 {
