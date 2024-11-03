@@ -89,14 +89,14 @@
         diode-direction = "col2row";
 
         col-gpios
-            = <&shift_reg 0 (GPIO_ACTIVE_HIGH)> // C0: QH
-            , <&shift_reg 1 (GPIO_ACTIVE_HIGH)> // C1: QG
-            , <&shift_reg 2 (GPIO_ACTIVE_HIGH)> // C2: QF
-            , <&shift_reg 3 (GPIO_ACTIVE_HIGH)> // C3: QE
-            , <&shift_reg 4 (GPIO_ACTIVE_HIGH)> // C4: QD
-            , <&shift_reg 5 (GPIO_ACTIVE_HIGH)> // C5: QC
-            , <&shift_reg 6 (GPIO_ACTIVE_HIGH)> // C6: QB
-            , <&shift_reg 7 (GPIO_ACTIVE_HIGH)> // C7: QA
+            = <&shift_reg 7 (GPIO_ACTIVE_HIGH)> // C0: QH
+            , <&shift_reg 6 (GPIO_ACTIVE_HIGH)> // C1: QG
+            , <&shift_reg 5 (GPIO_ACTIVE_HIGH)> // C2: QF
+            , <&shift_reg 4 (GPIO_ACTIVE_HIGH)> // C3: QE
+            , <&shift_reg 3 (GPIO_ACTIVE_HIGH)> // C4: QD
+            , <&shift_reg 2 (GPIO_ACTIVE_HIGH)> // C5: QC
+            , <&shift_reg 1 (GPIO_ACTIVE_HIGH)> // C6: QB
+            , <&shift_reg 0 (GPIO_ACTIVE_HIGH)> // C7: QA
             , <&gpio1 6 GPIO_ACTIVE_HIGH> // C8: GPIO 9
             , <&gpio1 13 GPIO_ACTIVE_HIGH>  // C9: GPIO 22
             , <&gpio1 11 GPIO_ACTIVE_HIGH>  // C10: GPIO 20
@@ -106,7 +106,7 @@
             ;
 
         row-gpios
-            = <&gpio1 4(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R0: GPIO 8
+            = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R0: GPIO 8
             , <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R1: GPIO 25
             , <&gpio1 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R2: GPIO 18
             , <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R3: GPIO 24
