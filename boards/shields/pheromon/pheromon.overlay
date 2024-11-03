@@ -85,68 +85,7 @@
 
 
 
-/ {
-    kscan0: kscan_0 {
-        compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "col2row";
-
-        col-gpios
-            = <&shift_reg 7 (GPIO_ACTIVE_HIGH)> // C0: QH
-            , <&shift_reg 6 (GPIO_ACTIVE_HIGH)> // C1: QG
-            , <&shift_reg 5 (GPIO_ACTIVE_HIGH)> // C2: QF
-            , <&shift_reg 4 (GPIO_ACTIVE_HIGH)> // C3: QE
-            , <&shift_reg 3 (GPIO_ACTIVE_HIGH)> // C4: QD
-            , <&shift_reg 2 (GPIO_ACTIVE_HIGH)> // C5: QC
-            , <&shift_reg 1 (GPIO_ACTIVE_HIGH)> // C6: QB
-            , <&shift_reg 0 (GPIO_ACTIVE_HIGH)> // C7: QA
-            , <&gpio1 6 GPIO_ACTIVE_HIGH> // C8: GPIO 9
-            , <&gpio1 13 GPIO_ACTIVE_HIGH>  // C9: GPIO 22
-            , <&gpio1 11 GPIO_ACTIVE_HIGH>  // C10: GPIO 20
-            , <&gpio0 10 GPIO_ACTIVE_HIGH>  // C11: GPIO 23
-            , <&gpio0 6 GPIO_ACTIVE_HIGH> // C12: GPIO 0
-            , <&gpio0 8 GPIO_ACTIVE_HIGH> // C13: GPIO 1 
-            ;
-
-        row-gpios
-            = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R0: GPIO 8
-            , <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R1: GPIO 25
-            , <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R2: GPIO 18
-            , <&gpio1 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R3: GPIO 24
-            , <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R4: GPIO 21
-            ;
-    };
-     encoder_1: encoder_1 {
-        compatible = "alps,ec11";
-        a-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        resolution = <4>;
-        steps = <80>;
-        status = "okay";
-    };
-
-    sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&encoder_1>;
-        triggers-per-rotation = <20>;
-    };
-
-    default_transform: keymap_transform_0 {
-        compatible = "zmk,matrix-transform";
-        columns = <14>;
-        rows = <5>;
-        map = <
-                        RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6) RC(0,7) RC(0,8) RC(0,9) RC(0,10) RC(0,11) RC(0,12) RC(0,13)  RC(2,13)
-                        RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6) RC(1,7) RC(1,8) RC(1,9) RC(1,10) RC(1,11) RC(1,12) RC(1,13)
-                        RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10) RC(2,11) RC(2,12)
-                        RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) RC(3,10) RC(3,11) RC(3,12) RC(3,13)
-                RC(4,3) RC(4,0) RC(4,1) RC(4,2)                 RC(4,6)                          RC(4,11) RC(4,12) RC(4,13)
-        >;
-    };
-    chosen {
-    zmk,physical-layout = &default_layout;
-};
-
-default_layout: default_layout {
+/ {default_layout: default_layout {
     compatible = "zmk,physical-layout";
     display-name = "Default";
     transform = <&default_transform>;
@@ -208,7 +147,7 @@ default_layout: default_layout {
         , <&key_physical_attrs 100 100 1200  300       0     0     0>
         , <&key_physical_attrs 100 100 1300  300       0     0     0>
         , <&key_physical_attrs 100 100 1400  300       0     0     0>
-        , <&key_physical_attrs 100 100  125  500       0     0     0>
+        , <&key_physical_attrs 100 100    0  500       0     0     0>
         , <&key_physical_attrs 125 100    0  400       0     0     0>
         , <&key_physical_attrs 125 100  125  400       0     0     0>
         , <&key_physical_attrs 125 100  250  400       0     0     0>
@@ -218,4 +157,60 @@ default_layout: default_layout {
         , <&key_physical_attrs 100 100 1400  400       0     0     0>
         ;
 };
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+
+        col-gpios
+            = <&shift_reg 7 (GPIO_ACTIVE_HIGH)> // C0: QH
+            , <&shift_reg 6 (GPIO_ACTIVE_HIGH)> // C1: QG
+            , <&shift_reg 5 (GPIO_ACTIVE_HIGH)> // C2: QF
+            , <&shift_reg 4 (GPIO_ACTIVE_HIGH)> // C3: QE
+            , <&shift_reg 3 (GPIO_ACTIVE_HIGH)> // C4: QD
+            , <&shift_reg 2 (GPIO_ACTIVE_HIGH)> // C5: QC
+            , <&shift_reg 1 (GPIO_ACTIVE_HIGH)> // C6: QB
+            , <&shift_reg 0 (GPIO_ACTIVE_HIGH)> // C7: QA
+            , <&gpio1 6 GPIO_ACTIVE_HIGH> // C8: GPIO 9
+            , <&gpio1 13 GPIO_ACTIVE_HIGH>  // C9: GPIO 22
+            , <&gpio1 11 GPIO_ACTIVE_HIGH>  // C10: GPIO 20
+            , <&gpio0 10 GPIO_ACTIVE_HIGH>  // C11: GPIO 23
+            , <&gpio0 6 GPIO_ACTIVE_HIGH> // C12: GPIO 0
+            , <&gpio0 8 GPIO_ACTIVE_HIGH> // C13: GPIO 1 
+            ;
+
+        row-gpios
+            = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R0: GPIO 8
+            , <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R1: GPIO 25
+            , <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R2: GPIO 18
+            , <&gpio1 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R3: GPIO 24
+            , <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  // R4: GPIO 21
+            ;
+    };
+     encoder_1: encoder_1 {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        resolution = <4>;
+        steps = <80>;
+        status = "okay";
+    };
+
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&encoder_1>;
+        triggers-per-rotation = <20>;
+    };
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <14>;
+        rows = <5>;
+        map = <
+                        RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6) RC(0,7) RC(0,8) RC(0,9) RC(0,10) RC(0,11) RC(0,12) RC(0,13)  RC(2,13)
+                        RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6) RC(1,7) RC(1,8) RC(1,9) RC(1,10) RC(1,11) RC(1,12) RC(1,13)
+                        RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10) RC(2,11) RC(2,12)
+                        RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) RC(3,10) RC(3,11) RC(3,12) RC(3,13)
+                RC(4,3) RC(4,0) RC(4,1) RC(4,2)                 RC(4,6)                          RC(4,11) RC(4,12) RC(4,13)
+        >;
+    };
 };
